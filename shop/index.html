@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop NYE '26 — Panic on the Porch</title>
+<meta name="description" content="Pre-order the Panic on the Porch NYE '26 pocket tee — $35. Campaign ends Wednesday, December 2nd, 2026 at 11:59 pm EST.">
+<meta property="og:title" content="Shop NYE '26 — Panic on the Porch">
+<meta property="og:description" content="Pre-order the Panic on the Porch NYE '26 pocket tee — $35. Campaign ends Wednesday, December 2nd, 2026 at 11:59 pm EST.">
+<meta property="og:image" content="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-mockup.jpg?v=1795037793&width=1200">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪑</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Panic on the Porch</a>
+    <nav class="nav" aria-label="Main"><a href="/shop/" aria-current="page">Shop</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap" style="padding-top:20px;padding-bottom:90px">
+<div class="pop-card" id="pop-nye26">
+  <style>
+    #pop-nye26 {
+      --pop-ink: #3a302b;          /* main text */
+      --pop-muted: #6b5d52;        /* secondary text */
+      --pop-line: #cdbfae;         /* borders */
+      --pop-accent: #3a322e;       /* button + selected pill */
+      --pop-accent-ink: #f3ede5;   /* text on accent */
+      --pop-bg: transparent;
+      --pop-radius: 999px;         /* pill roundness */
+      --pop-font: inherit;         /* uses the Squarespace site font */
+
+      font-family: var(--pop-font);
+      color: var(--pop-ink);
+      background: var(--pop-bg);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    #pop-nye26 *, #pop-nye26 *::before, #pop-nye26 *::after { box-sizing: border-box; }
+    @media (min-width: 800px) {
+      #pop-nye26 { grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: start; }
+    }
+
+    /* Gallery */
+    #pop-nye26 .pop-main {
+      width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+      display: block; border-radius: 6px; background: #e0d6ca;
+    }
+    #pop-nye26 .pop-thumbs { display: flex; gap: 10px; margin-top: 12px; }
+    #pop-nye26 .pop-thumb {
+      flex: 0 0 72px; height: 72px; padding: 0; border: 2px solid transparent;
+      border-radius: 6px; overflow: hidden; cursor: pointer; background: #e0d6ca;
+      opacity: .6; transition: opacity .15s, border-color .15s;
+    }
+    #pop-nye26 .pop-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    #pop-nye26 .pop-thumb:hover { opacity: 1; }
+    #pop-nye26 .pop-thumb[aria-current="true"] { opacity: 1; border-color: var(--pop-accent); }
+
+    /* Info */
+    #pop-nye26 .pop-eyebrow {
+      font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--pop-muted); margin: 0 0 8px;
+    }
+    #pop-nye26 .pop-title { font-size: clamp(26px, 3vw, 36px); line-height: 1.15; margin: 0 0 10px; font-weight: 800; font-family: var(--head); }
+    #pop-nye26 .pop-price { font-size: 22px; margin: 0 0 28px; font-weight: 500; }
+
+    #pop-nye26 .pop-label {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+    #pop-nye26 .pop-label span { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--pop-muted); }
+
+    #pop-nye26 .pop-sizes { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; border: 0; }
+    #pop-nye26 .pop-size {
+      min-width: 56px; height: 44px; padding: 0 16px;
+      border: 1.5px solid var(--pop-line); border-radius: var(--pop-radius);
+      background: transparent; color: var(--pop-ink);
+      font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+      transition: border-color .15s, background .15s, color .15s;
+    }
+    #pop-nye26 .pop-size:hover { border-color: var(--pop-accent); }
+    #pop-nye26 .pop-size[aria-checked="true"] {
+      background: var(--pop-accent); border-color: var(--pop-accent); color: var(--pop-accent-ink);
+    }
+    #pop-nye26 .pop-size:focus-visible, #pop-nye26 .pop-cta:focus-visible,
+    #pop-nye26 .pop-qty button:focus-visible, #pop-nye26 .pop-thumb:focus-visible {
+      outline: 2px solid var(--pop-accent); outline-offset: 2px;
+    }
+
+    #pop-nye26 .pop-buy { display: flex; gap: 12px; margin: 0 0 8px; }
+    #pop-nye26 .pop-qty {
+      display: flex; align-items: center; border: 1.5px solid var(--pop-line);
+      border-radius: var(--pop-radius); height: 52px; flex: 0 0 auto;
+    }
+    #pop-nye26 .pop-qty button {
+      width: 40px; height: 100%; border: 0; background: transparent; cursor: pointer;
+      font: inherit; font-size: 20px; color: var(--pop-ink); border-radius: var(--pop-radius);
+    }
+    #pop-nye26 .pop-qty output { min-width: 24px; text-align: center; font-weight: 600; }
+
+    #pop-nye26 .pop-cta {
+      flex: 1; height: 52px; border: 0; border-radius: var(--pop-radius);
+      background: var(--pop-accent); color: var(--pop-accent-ink);
+      font: inherit; font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      cursor: pointer; transition: opacity .15s;
+    }
+    #pop-nye26 .pop-cta:disabled { opacity: .45; cursor: not-allowed; }
+    #pop-nye26 .pop-hint { font-size: 13px; color: var(--pop-muted); margin: 0 0 32px; min-height: 1.2em; }
+
+    /* Details */
+    #pop-nye26 .pop-details { border-top: 1px solid var(--pop-line); padding-top: 24px; margin: 0; }
+    #pop-nye26 .pop-row { margin: 0 0 18px; }
+    #pop-nye26 .pop-row dt {
+      font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--pop-muted); margin: 0 0 4px;
+    }
+    #pop-nye26 .pop-row dd { margin: 0; font-size: 16px; line-height: 1.55; }
+    #pop-nye26 .pop-note {
+      font-size: 14px; line-height: 1.6; color: var(--pop-muted);
+      background: rgba(58,48,43,.07); border-radius: 8px; padding: 14px 16px; margin: 6px 0 0;
+    }
+  </style>
+
+  <!-- Gallery -->
+  <div class="pop-gallery">
+    <img class="pop-main" id="pop-main"
+         src="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-mockup.jpg?v=1795037793&width=1200"
+         alt="Panic on the Porch NYE '26 approved artwork and shirt mockup">
+    <div class="pop-thumbs" role="group" aria-label="Product images">
+      <button type="button" class="pop-thumb" aria-current="true"
+        data-src="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-mockup.jpg?v=1795037793&width=1200"
+        data-alt="Panic on the Porch NYE '26 approved artwork and shirt mockup">
+        <img src="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-mockup.jpg?v=1795037793&width=200" alt="Artwork and mockup">
+      </button>
+      <button type="button" class="pop-thumb" aria-current="false"
+        data-src="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-front_1.jpg?v=1795037769&width=1200"
+        data-alt="Panic on the Porch NYE '26 Blue Jean pocket tee — front">
+        <img src="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-front_1.jpg?v=1795037769&width=200" alt="Front">
+      </button>
+      <button type="button" class="pop-thumb" aria-current="false"
+        data-src="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-back_1.jpg?v=1795037787&width=1200"
+        data-alt="Panic on the Porch NYE '26 Blue Jean pocket tee — back">
+        <img src="https://cdn.shopify.com/s/files/1/1876/9703/files/v2-back_1.jpg?v=1795037787&width=200" alt="Back">
+      </button>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="pop-info">
+    <p class="pop-eyebrow">Pre-order · NYE '26</p>
+    <h1 class="pop-title">Panic on the Porch: NYE '26 S/S Pocket Tee</h1>
+    <p class="pop-price">$35.00</p>
+
+    <p class="pop-label" id="pop-size-label">Size <span id="pop-size-picked">Select a size</span></p>
+    <div class="pop-sizes" role="radiogroup" aria-labelledby="pop-size-label">
+      <button type="button" class="pop-size" role="radio" aria-checked="false" data-id="67689019801750">S</button>
+      <button type="button" class="pop-size" role="radio" aria-checked="false" data-id="67689019834518">M</button>
+      <button type="button" class="pop-size" role="radio" aria-checked="false" data-id="67689019867286">L</button>
+      <button type="button" class="pop-size" role="radio" aria-checked="false" data-id="67689019900054">XL</button>
+      <button type="button" class="pop-size" role="radio" aria-checked="false" data-id="67689019932822">XXL</button>
+      <button type="button" class="pop-size" role="radio" aria-checked="false" data-id="67689019965590">XXXL</button>
+    </div>
+
+    <div class="pop-buy">
+      <div class="pop-qty" aria-label="Quantity">
+        <button type="button" data-step="-1" aria-label="Decrease quantity">−</button>
+        <output id="pop-qty" aria-live="polite">1</output>
+        <button type="button" data-step="1" aria-label="Increase quantity">+</button>
+      </div>
+      <button type="button" class="pop-cta" id="pop-cta" disabled>Pre-order — $35</button>
+    </div>
+    <p class="pop-hint" id="pop-hint">Choose a size to continue.</p>
+
+    <dl class="pop-details">
+      <div class="pop-row">
+        <dt>Garment</dt>
+        <dd>Comfort Colors 6030 Short Sleeve Pocket Tee — Blue Jean</dd>
+      </div>
+      <div class="pop-row">
+        <dt>Campaign ends</dt>
+        <dd>Wednesday, December 2nd, 2026 at 11:59 pm EST</dd>
+      </div>
+      <div class="pop-row">
+        <dt>Delivery</dt>
+        <dd>Once the campaign closes, we tally up sizes and get to printing.</dd>
+      </div>
+      <p class="pop-note">This is a pre-order. Items are expected to ship from Atlanta about 7 business days after the campaign closes. You'll get another email with tracking when your order ships.</p>
+    </dl>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById('pop-nye26');
+      if (!root) return;
+      var SHOP = 'https://shop.loud.global';
+      var PRICE = 35;
+      var variant = null, size = '', qty = 1;
+
+      var main = root.querySelector('#pop-main');
+      var thumbs = root.querySelectorAll('.pop-thumb');
+      var pills = root.querySelectorAll('.pop-size');
+      var qtyOut = root.querySelector('#pop-qty');
+      var cta = root.querySelector('#pop-cta');
+      var hint = root.querySelector('#pop-hint');
+      var picked = root.querySelector('#pop-size-picked');
+
+      thumbs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          main.src = t.dataset.src; main.alt = t.dataset.alt;
+          thumbs.forEach(function (x) { x.setAttribute('aria-current', x === t ? 'true' : 'false'); });
+        });
+      });
+
+      function render() {
+        var total = '$' + (PRICE * qty);
+        cta.textContent = 'Pre-order — ' + total;
+        cta.disabled = !variant;
+        picked.textContent = size || 'Select a size';
+        hint.textContent = variant ? qty + ' × ' + size + ' — you’ll check out securely on Shopify.' : 'Choose a size to continue.';
+      }
+
+      pills.forEach(function (p) {
+        p.addEventListener('click', function () {
+          variant = p.dataset.id; size = p.textContent.trim();
+          pills.forEach(function (x) { x.setAttribute('aria-checked', x === p ? 'true' : 'false'); });
+          render();
+        });
+      });
+
+      root.querySelectorAll('.pop-qty button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          qty = Math.min(20, Math.max(1, qty + parseInt(b.dataset.step, 10)));
+          qtyOut.textContent = qty; render();
+        });
+      });
+
+      cta.addEventListener('click', function () {
+        if (!variant) return;
+        cta.disabled = true; cta.textContent = 'Heading to checkout…';
+        window.location.href = SHOP + '/cart/' + variant + ':' + qty;
+      });
+
+      render();
+    })();
+  </script>
+</div>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="/">Panic on the Porch</a>
+    <a class="email" href="mailto:panicontheporch@gmail.com">panicontheporch@gmail.com</a>
+    <span class="small">&copy; 2026 Panic on the Porch</span>
+    <a class="ig" href="https://www.instagram.com/panicontheporch/" aria-label="Panic on the Porch on Instagram" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+</footer>
+</body>
+</html>
