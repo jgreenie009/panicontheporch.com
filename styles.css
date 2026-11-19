@@ -1,0 +1,87 @@
+/* Panic on the Porch — site styles (matches the original Squarespace design) */
+:root {
+  --bg: #eae2d8;
+  --ink: #3a302b;
+  --muted: #6b5d52;
+  --line: #cdbfae;
+  --field: #f3efe9;
+  --btn: #3a322e;
+  --btn-ink: #f3ede5;
+  --head: "Neuton", Georgia, serif;
+  --body: "PT Serif", Georgia, serif;
+  --wrap: 1180px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+
+/* Header */
+.site-header { position: relative; z-index: 5; }
+.site-header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 26px; padding-bottom: 26px; }
+.brand { font-family: var(--head); font-weight: 800; font-size: 22px; text-decoration: none; }
+.nav { display: flex; gap: 26px; }
+.nav a { text-decoration: none; font-size: 18px; padding-bottom: 2px; border-bottom: 1px solid transparent; }
+.nav a:hover, .nav a[aria-current="page"] { border-bottom-color: currentColor; }
+.site-header.on-photo { position: absolute; top: 0; left: 0; right: 0; color: #fff; }
+
+/* Headings */
+h1, h2, h3 { font-family: var(--head); font-weight: 800; line-height: 1.1; margin: 0 0 18px; }
+h1 { font-size: clamp(40px, 5.2vw, 64px); letter-spacing: -0.01em; }
+.lede { font-family: var(--head); font-weight: 700; font-size: 22px; line-height: 1.35; margin: 0 0 14px; }
+
+/* Buttons */
+.btn { display: inline-block; font-family: var(--body); font-size: 16px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; padding: 18px 30px; border-radius: 12px; background: var(--btn); color: var(--btn-ink); border: 0; cursor: pointer; }
+.btn-tan { background: rgba(234, 226, 216, .82); color: var(--ink); }
+.btn:hover { opacity: .9; }
+
+/* Home hero */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; color: #fff; background: #222 center/cover no-repeat; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15) 45%, rgba(0,0,0,.35)); }
+.hero .wrap { position: relative; width: 100%; padding-top: 120px; padding-bottom: 80px; }
+.hero h1 { max-width: 640px; font-size: clamp(44px, 6vw, 76px); }
+
+/* Marquee */
+.marquee { overflow: hidden; white-space: nowrap; padding: 40px 0 56px; }
+.marquee-track { display: inline-block; animation: marquee 28s linear infinite; }
+.marquee span { font-family: var(--head); font-weight: 800; font-size: clamp(64px, 11vw, 160px); line-height: 1; padding-right: .5em; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* Split pages (About / Contact) */
+.split .wrap { display: grid; grid-template-columns: 1fr; gap: 40px; padding-top: 30px; padding-bottom: 90px; align-items: center; }
+.split .copy { max-width: 470px; }
+.split .photo img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; }
+@media (min-width: 860px) {
+  .split .wrap { grid-template-columns: 1fr 1fr; gap: 80px; }
+  .split .photo { justify-self: end; width: 100%; max-width: 460px; }
+}
+
+/* Contact form */
+.form { margin-top: 28px; display: grid; gap: 18px; }
+.form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form label { display: block; font-size: 16px; margin-bottom: 6px; }
+.form label small { color: var(--muted); font-size: 14px; margin-left: 4px; }
+.form input, .form textarea { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--field); border: 1px solid transparent; border-radius: 10px; padding: 12px 14px; }
+.form input:focus, .form textarea:focus { outline: none; border-color: var(--ink); }
+.form textarea { min-height: 120px; resize: vertical; }
+.form .hp { display: none; }
+.sent { background: rgba(58,48,43,.07); border-radius: 10px; padding: 14px 16px; margin-top: 20px; }
+
+/* Footer */
+.site-footer { border-top: 1px solid rgba(58,48,43,.12); }
+.site-footer .wrap { display: grid; grid-template-columns: 1fr auto; gap: 18px 28px; padding-top: 44px; padding-bottom: 44px; align-items: center; }
+.site-footer .brand { font-size: 28px; }
+.site-footer .email { justify-self: end; font-size: 19px; text-decoration: none; }
+.site-footer .small { color: var(--muted); font-size: 14px; }
+.site-footer .ig { justify-self: end; display: inline-flex; }
+.site-footer .ig svg { width: 22px; height: 22px; }
+@media (max-width: 600px) {
+  .site-footer .wrap { grid-template-columns: 1fr; }
+  .site-footer .email, .site-footer .ig { justify-self: start; }
+  .nav { gap: 16px; }
+  .nav a { font-size: 16px; }
+  .form .row { grid-template-columns: 1fr; }
+}
