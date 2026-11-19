@@ -118,6 +118,24 @@
     #pop-nye26 .pop-cta:disabled { opacity: .45; cursor: not-allowed; }
     #pop-nye26 .pop-hint { font-size: 13px; color: var(--pop-muted); margin: 0 0 32px; min-height: 1.2em; }
 
+    /* Order list */
+    #pop-nye26 .pop-add {
+      flex: 1; height: 52px; border-radius: var(--pop-radius);
+      border: 1.5px solid var(--pop-accent); background: var(--pop-accent); color: var(--pop-accent-ink);
+      font: inherit; font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      cursor: pointer; transition: opacity .15s, background .15s, color .15s;
+    }
+    #pop-nye26 .pop-add:disabled { opacity: .45; cursor: not-allowed; }
+    #pop-nye26.has-items .pop-add { background: transparent; color: var(--pop-accent); }
+    #pop-nye26 .pop-add:focus-visible { outline: 2px solid var(--pop-accent); outline-offset: 2px; }
+    #pop-nye26 .pop-hint { margin-bottom: 16px; }
+    #pop-nye26 .pop-bag { margin: 0 0 16px; padding: 0; list-style: none; border-top: 1px solid var(--pop-line); }
+    #pop-nye26 .pop-bag li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--pop-line); font-size: 15px; }
+    #pop-nye26 .pop-line-right { display: flex; align-items: center; gap: 14px; }
+    #pop-nye26 .pop-remove { border: 0; background: transparent; color: var(--pop-muted); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; padding: 4px; }
+    #pop-nye26 .pop-cta { width: 100%; flex: none; margin: 0 0 16px; }
+    #pop-nye26 .pop-details { margin-top: 16px; }
+
     /* Details */
     #pop-nye26 .pop-details { border-top: 1px solid var(--pop-line); padding-top: 24px; margin: 0; }
     #pop-nye26 .pop-row { margin: 0 0 18px; }
@@ -178,9 +196,11 @@
         <output id="pop-qty" aria-live="polite">1</output>
         <button type="button" data-step="1" aria-label="Increase quantity">+</button>
       </div>
-      <button type="button" class="pop-cta" id="pop-cta" disabled>Pre-order — $35</button>
+      <button type="button" class="pop-add" id="pop-add" disabled>Add to order</button>
     </div>
-    <p class="pop-hint" id="pop-hint">Choose a size to continue.</p>
+    <p class="pop-hint" id="pop-hint" aria-live="polite">Choose a size to continue.</p>
+    <ul class="pop-bag" id="pop-bag" aria-label="Your order" hidden></ul>
+    <button type="button" class="pop-cta" id="pop-cta" hidden>Pre-order</button>
 
     <dl class="pop-details">
       <div class="pop-row">
@@ -205,15 +225,22 @@
       if (!root) return;
       var SHOP = 'https://shop.loud.global';
       var PRICE = 35;
-      var variant = null, size = '', qty = 1;
+      var KEY = 'potp-nye26-order';
+      var ORDER = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+      var variant = null, size = '', qty = 1, bag = {};
+      try { bag = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { bag = {}; }
 
       var main = root.querySelector('#pop-main');
       var thumbs = root.querySelectorAll('.pop-thumb');
       var pills = root.querySelectorAll('.pop-size');
       var qtyOut = root.querySelector('#pop-qty');
+      var add = root.querySelector('#pop-add');
       var cta = root.querySelector('#pop-cta');
+      var list = root.querySelector('#pop-bag');
       var hint = root.querySelector('#pop-hint');
       var picked = root.querySelector('#pop-size-picked');
+      var ids = {};
+      pills.forEach(function (p) { ids[p.textContent.trim()] = p.dataset.id; });
 
       thumbs.forEach(function (t) {
         t.addEventListener('click', function () {
@@ -222,12 +249,30 @@
         });
       });
 
+      function save() { try { localStorage.setItem(KEY, JSON.stringify(bag)); } catch (e) {} }
+      function count() { var n = 0; for (var k in bag) { if (ids[k]) n += bag[k]; } return n; }
+
       function render() {
-        var total = '$' + (PRICE * qty);
-        cta.textContent = 'Pre-order — ' + total;
-        cta.disabled = !variant;
+        var n = count();
+        root.classList.toggle('has-items', n > 0);
         picked.textContent = size || 'Select a size';
-        hint.textContent = variant ? qty + ' × ' + size + ' — you’ll check out securely on Shopify.' : 'Choose a size to continue.';
+        add.disabled = !variant;
+        add.textContent = variant ? 'Add ' + qty + ' × ' + size + ' to order' : (n ? 'Add another size' : 'Add to order');
+        list.innerHTML = '';
+        ORDER.forEach(function (s) {
+          if (!bag[s]) return;
+          var li = document.createElement('li');
+          li.innerHTML = '<span><strong>' + s + '</strong> × ' + bag[s] + '</span>' +
+            '<span class="pop-line-right"><span>$' + (PRICE * bag[s]) + '</span>' +
+            '<button type="button" class="pop-remove" data-size="' + s + '" aria-label="Remove ' + s + ' from order">Remove</button></span>';
+          list.appendChild(li);
+        });
+        list.hidden = n === 0;
+        cta.hidden = n === 0;
+        cta.disabled = false;
+        cta.textContent = 'Pre-order ' + n + (n === 1 ? ' shirt' : ' shirts') + ' — $' + (PRICE * n);
+        if (variant) hint.textContent = n ? 'Adding to your order.' : 'You can add more than one size.';
+        else hint.textContent = n ? 'Need another size? Pick it above and add it.' : 'Choose a size to continue.';
       }
 
       pills.forEach(function (p) {
@@ -245,12 +290,31 @@
         });
       });
 
-      cta.addEventListener('click', function () {
+      add.addEventListener('click', function () {
         if (!variant) return;
-        cta.disabled = true; cta.textContent = 'Heading to checkout…';
-        window.location.href = SHOP + '/cart/' + variant + ':' + qty;
+        bag[size] = Math.min(20, (bag[size] || 0) + qty);
+        save();
+        variant = null; size = ''; qty = 1; qtyOut.textContent = 1;
+        pills.forEach(function (x) { x.setAttribute('aria-checked', 'false'); });
+        render();
       });
 
+      list.addEventListener('click', function (e) {
+        var b = e.target.closest('.pop-remove');
+        if (!b) return;
+        delete bag[b.dataset.size]; save(); render();
+      });
+
+      cta.addEventListener('click', function () {
+        var items = [];
+        ORDER.forEach(function (s) { if (bag[s] && ids[s]) items.push(ids[s] + ':' + bag[s]); });
+        if (!items.length) return;
+        cta.disabled = true; cta.textContent = 'Heading to checkout…';
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        window.location.href = SHOP + '/cart/' + items.join(',');
+      });
+
+      window.addEventListener('pageshow', function (e) { if (e.persisted) { save(); render(); } });
       render();
     })();
   </script>
